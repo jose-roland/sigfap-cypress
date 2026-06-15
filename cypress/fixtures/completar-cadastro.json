@@ -2,45 +2,18 @@
     "cep": "12410-130",
     "numero":"1",
     "complemento":"Banco da praça",
-    "instituicao":{
-        "nome": "UFMS/Universidade Federal do Mato Grosso do Sul",
-        "cy": "ufms-universidade-federal-do-mat"
-    },
-    "unidade": {
-        "nome": "FACOM/Faculdade de Computação",
-        "cy": "facom-faculdade-de-computacao"
-    },
-    "nivel": {
-        "nome": "Ensino Superior",
-        "cy": "ensino-superior"
-    },
+    "instituicao": "UFMS/Universidade Federal do Mato Grosso do Sul",
+    "unidade": "FACOM/Faculdade de Computação",
+    "nivel": "Ensino Superior",
     "lattes": "lattes",
     "linkedin": "www.linkedin.com",
-    "grandeArea": {
-        "nome": "Ciências Exatas e da Terra",
-        "cy": "ciencias-exatas-e-da-terra"
-    },
-    "area": {
-        "nome": "Ciência da Computação",
-        "cy": "ciencia-da-computacao"
-    },
-    "subArea": {
-        "nome": "Metodologia e Técnicas da Computação",
-        "cy": "metodologia-e-tecnicas-da-comput"
-    },
-    "especialidade": {
-        "nome": "Engenharia de Software",
-        "cy": "engenharia-de-software"
-    },
-    "vinculo": {
-        "nome": "Estagiário",
-        "cy": "estagiario"
-    },
+    "grandeArea": "Ciências Exatas e da Terra",
+    "area": "Ciência da Computação",
+    "subArea": "Metodologia e Técnicas da Computação",
+    "especialidade": "Engenharia de Software",
+    "vinculo": "Estagiário",
     "inicioServico": "01/01/2026",
-    "regime": {
-        "nome": "Outros",
-        "cy": "outros"
-    },
+    "regime": "Outros",
     "cargo": "help-desk",
     "inicioCargo": "01/01/2026"
 }
