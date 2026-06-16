@@ -49,7 +49,7 @@ describe("Completar cadastro do usuário", () => {
                     cy.get('body').then(($body) => {
                         const totalBotoes = $body.find('[data-cy="apagar-button"]').length;
                         if (totalBotoes > 0) {
-                            cy.get('[data-cy="apagar-button"]').click({multiple: true});
+                            cy.get('[data-cy="apagar-button"]').first().click();
                             if (totalBotoes === 1) {
                                 // Se era o último botão, espera ele sumir completamente
                                 cy.get('[data-cy="apagar-button"]').should('not.exist');
@@ -86,13 +86,17 @@ describe("Completar cadastro do usuário", () => {
                 cy.get('[data-cy="dados-profissionais"]').click();
             
                 cy.get('body').then(($body) => {
-                    if (!$body.find('[data-cy="possui-vinculo-institucional"]').is(':checked'))
+                    if ($body.find('[data-cy="possui-vinculo-institucional"]').is(':checked'))
+                        void 0;
+                    else
                         cy.get('[data-cy="possui-vinculo-institucional-box"]').click();
                 });
                 cy.get('[data-cy="search-tipo-vinculo-instituciona"]').clear().type(dados.vinculo + '{enter}');
             
                 cy.get('body').then(($body) => {
-                    if (!$body.find('[data-cy="possui-vinculo-empregaticio-box"]').is(':checked'))
+                    if ($body.find('[data-cy="possui-vinculo-empregaticio-box"]').is(':checked'))
+                        void 0;
+                    else
                         cy.get('[data-cy="possui-vinculo-empregaticio-box"]').click();
                 });
             
@@ -117,7 +121,7 @@ describe("Completar cadastro do usuário", () => {
                 cy.get('body').then(($body) => {
                     const totalBotoes = $body.find('.svg-inline--fa.fa-trash').length;
                     if (totalBotoes > 0) {
-                        cy.get('.svg-inline--fa.fa-trash').click({multiple: true});//Sugiro que criem um data-cy para isso
+                        cy.get('.svg-inline--fa.fa-trash').first().click();//Sugiro que criem um data-cy para isso
                         if (totalBotoes === 1) {
                             // Se era o último botões, espera ele sumir completamente
                             cy.get('.svg-inline--fa.fa-trash').should('not.exist');
