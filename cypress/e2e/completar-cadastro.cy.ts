@@ -1,5 +1,4 @@
 import { toCyString } from "../helpers/kebab.helper";
-import 'cypress-if';
 
 describe("Completar cadastro do usuário", () => {
     context("Completar todos os campos de informação do usuário", () => {
@@ -36,11 +35,11 @@ describe("Completar cadastro do usuário", () => {
             
                 cy.get('[data-cy="dados-academicos"]').click();
             
-                cy.get('[data-cy="search-instituicao-id"]').clear().type(dados.instituicao.nome + '{enter}');
+                cy.get('[data-cy="search-instituicao-id"]').clear().type(dados.instituicao + '{enter}');
             
-                cy.get('[data-cy="search-unidade-id"]').clear().type(dados.unidade.nome + '{enter}');
+                cy.get('[data-cy="search-unidade-id"]').clear().type(dados.unidade + '{enter}');
             
-                cy.get('[data-cy="search-nivel-academico-id"]').clear().type(dados.nivel.nome + '{enter}');
+                cy.get('[data-cy="search-nivel-academico-id"]').clear().type(dados.nivel + '{enter}');
               
                 cy.get('[data-cy="lattes"]').clear().type(dados.lattes);
                 
@@ -50,9 +49,9 @@ describe("Completar cadastro do usuário", () => {
                     cy.get('body').then(($body) => {
                         const totalBotoes = $body.find('[data-cy="apagar-button"]').length;
                         if (totalBotoes > 0) {
-                            cy.get('[data-cy="apagar-button"]').click();
+                            cy.get('[data-cy="apagar-button"]').first().click();
                             if (totalBotoes === 1) {
-                                // Se era o último botões, espera ele sumir completamente
+                                // Se era o último botão, espera ele sumir completamente
                                 cy.get('[data-cy="apagar-button"]').should('not.exist');
                             } else {
                                 // Se tem vários botões, espera a quantidade reduzir em exatamente 1
@@ -66,13 +65,13 @@ describe("Completar cadastro do usuário", () => {
             
                 cy.get('[data-cy="add-areas-de-conhecimento"]').click();
             
-                cy.get('[data-cy="search-grande-area-id"]').type(dados.grandeArea.nome + '{enter}');
+                cy.get('[data-cy="search-grande-area-id"]').type(dados.grandeArea + '{enter}');
             
-                cy.get('[data-cy="search-area-id"]').type(dados.area.nome + '{enter}');
+                cy.get('[data-cy="search-area-id"]').type(dados.area + '{enter}');
             
-                cy.get('[data-cy="search-sub-area-id"]').type(dados.subArea.nome + '{enter}');
+                cy.get('[data-cy="search-sub-area-id"]').type(dados.subArea + '{enter}');
             
-                cy.get('[data-cy="search-especialidade-id"]').type(dados.especialidade.nome + '{enter}');
+                cy.get('[data-cy="search-especialidade-id"]').type(dados.especialidade + '{enter}');
                 
                 cy.get('[data-cy="areaDeConhecimento-confirmar"]').click();
             
@@ -87,19 +86,23 @@ describe("Completar cadastro do usuário", () => {
                 cy.get('[data-cy="dados-profissionais"]').click();
             
                 cy.get('body').then(($body) => {
-                    if (!$body.find('[data-cy="possui-vinculo-institucional"]').is(':checked'))
+                    if ($body.find('[data-cy="possui-vinculo-institucional"]').is(':checked'))
+                        void 0;
+                    else
                         cy.get('[data-cy="possui-vinculo-institucional-box"]').click();
                 });
-                cy.get('[data-cy="search-tipo-vinculo-instituciona"]').clear().type(dados.vinculo.nome + '{enter}');
+                cy.get('[data-cy="search-tipo-vinculo-instituciona"]').clear().type(dados.vinculo + '{enter}');
             
                 cy.get('body').then(($body) => {
-                    if (!$body.find('[data-cy="possui-vinculo-empregaticio-box"]').is(':checked'))
+                    if ($body.find('[data-cy="possui-vinculo-empregaticio-box"]').is(':checked'))
+                        void 0;
+                    else
                         cy.get('[data-cy="possui-vinculo-empregaticio-box"]').click();
                 });
             
                 cy.get('[data-cy="vinculoInstitucional.inicioServico"]').clear().type(dados.inicioServico);
             
-                cy.get('[data-cy="search-regime-trabalho-id"]').clear().type(dados.regime.nome + '{enter}');
+                cy.get('[data-cy="search-regime-trabalho-id"]').clear().type(dados.regime + '{enter}');
             
                 cy.get('[data-cy="vinculoInstitucional.funcao"]').clear().type(dados.cargo);
             
@@ -118,7 +121,7 @@ describe("Completar cadastro do usuário", () => {
                 cy.get('body').then(($body) => {
                     const totalBotoes = $body.find('.svg-inline--fa.fa-trash').length;
                     if (totalBotoes > 0) {
-                        cy.get('.svg-inline--fa.fa-trash').click();
+                        cy.get('.svg-inline--fa.fa-trash').first().click();//Sugiro que criem um data-cy para isso
                         if (totalBotoes === 1) {
                             // Se era o último botões, espera ele sumir completamente
                             cy.get('.svg-inline--fa.fa-trash').should('not.exist');
@@ -132,7 +135,7 @@ describe("Completar cadastro do usuário", () => {
             };
             apagarAreas();
             
-            cy.get('.css-4jgibr.e1nj8mux6').click();
+            cy.get('.css-4jgibr.e1nj8mux6').click();//Sugiro que criem um data-cy para isso
             
             cy.get('[data-cy="documento-de-identificacao-com-f"]').click();
             
