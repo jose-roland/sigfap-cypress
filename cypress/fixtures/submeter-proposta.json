@@ -1,0 +1,15 @@
+{
+  "tituloProjeto": "Proposta do edital de lançamento de notas",
+  "duracao": "12",
+  "instituicao": "UFMS",
+  "unidade": "FACOM",
+  "coordenadorNome": "Coordenador Teste",
+  "sexo": "Masculino",
+  "pais": "Brasil",
+  "estado": "Mato Grosso do Sul",
+  "municipio": "Campo Grande",
+  "apresentacaoInformacoes": "Informações relevantes do teste Cypress",
+  "apresentacaoExperiencia": "Experiência do coordenador em testes",
+  "apresentacaoObjetivo": "Objetivo geral: Validar persistência",
+  "anexoDocumento": "documento-com-foto.pdf"
+}
