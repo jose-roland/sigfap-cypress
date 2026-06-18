@@ -401,7 +401,7 @@ describe("Submeter uma proposta", () => {
           });
         });
 
-        it.only('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
+        it('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
           cy.contains("Coordenação").click();
           cy.get('[data-cy="dados-profissionais"]').click();
 
@@ -459,6 +459,38 @@ describe("Submeter uma proposta", () => {
         });
       });
 
+      context("Apresentação", () => {
+        it.only('Preenche "Descrição" em "Apresentação" com dados válidos e salva.', () => {
+          cy.contains("Apresentação").click();
+          cy.get('[data-cy="descricao"]').click();
+
+          cy.fixture("submeter-proposta").then((dados) => {
+            cy.get('[data-cy="formularioPropostaDescritiva.pergunta-33"]')
+              .clear()
+              .type(dados.informacoesRelevantes);
+
+            cy.get('[data-cy="formularioPropostaDescritiva.pergunta-34"]')
+              .clear()
+              .type(dados.experienciaCoordenador);
+
+            cy.get('[data-cy="formularioPropostaDescritiva.pergunta-36"]')
+              .clear()
+              .type(dados.objetivoGeral);
+
+            cy.get(
+              '[data-cy="formularioPropostaDescritiva.pergunta-37-item-aa"]',
+            ).click();
+
+            cy.get(
+              '[data-cy="formularioPropostaDescritiva.pergunta-38-item-aa"]',
+            ).click();
+
+            cy.get('[data-cy="menu-salvar"]').click();
+            cy.wait(1000);
+            cy.contains("Salvo com sucesso!").should("be.visible");
+          });
+        });
+      });
       //   it('Vai para seção "Apresentação" e preenche e salva.', () => {
       //     cy.contains("Apresentação").click();
 
