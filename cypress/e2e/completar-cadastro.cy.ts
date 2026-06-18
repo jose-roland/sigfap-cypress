@@ -94,7 +94,7 @@ describe("Completar cadastro do usuário", () => {
                 cy.get('[data-cy="search-tipo-vinculo-instituciona"]').clear().type(dados.vinculo + '{enter}');
             
                 cy.get('body').then(($body) => {
-                    if ($body.find('[data-cy="possui-vinculo-empregaticio-box"]').is(':checked'))
+                    if ($body.find('[data-cy="possui-vinculo-empregaticio"]').is(':checked'))
                         void 0;
                     else
                         cy.get('[data-cy="possui-vinculo-empregaticio-box"]').click();
