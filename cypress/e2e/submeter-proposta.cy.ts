@@ -407,9 +407,10 @@ describe("Submeter uma proposta", () => {
 
           cy.fixture("submeter-proposta").then((dados) => {
             cy.get('[data-cy="possui-vinculo-institucional-box"]').then(
-              ($checkbox) => {
-                if (!$checkbox.is(":checked")) {
-                  cy.wrap($checkbox).click();
+              ($el) => {
+                const marcado = $el.find('svg[visible="true"]').length > 0;
+                if (!marcado) {
+                  cy.wrap($el).click();
                 }
               },
             );
@@ -460,7 +461,7 @@ describe("Submeter uma proposta", () => {
       });
 
       context("Apresentação", () => {
-        it.only('Preenche "Descrição" em "Apresentação" com dados válidos e salva.', () => {
+        it('Preenche "Descrição" em "Apresentação" com dados válidos e salva.', () => {
           cy.contains("Apresentação").click();
           cy.get('[data-cy="descricao"]').click();
 
@@ -491,11 +492,6 @@ describe("Submeter uma proposta", () => {
           });
         });
       });
-      //   it('Vai para seção "Apresentação" e preenche e salva.', () => {
-      //     cy.contains("Apresentação").click();
-
-      //     cy.get('[data-cy="menu-salvar"]').click();
-      //   });
 
       //   it('Vai para seção "Anexos" e preenche e salva.', () => {
       //     cy.contains("Anexos").click();
