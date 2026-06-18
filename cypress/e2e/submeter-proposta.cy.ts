@@ -113,10 +113,10 @@ describe("Submeter uma proposta", () => {
       });
 
       context("Caracterização", () => {
+        beforeEach(() => cy.get('[data-cy="caracterizacao"]').click());
+
         it('Preenche a seção de "Informações Iniciais" com dados válidos e salva.', () => {
           cy.fixture("submeter-proposta").then((dados) => {
-            //   cy.get('[data-cy="edital.nome"]').clear().type(dados.tituloProjeto);
-
             cy.get('[data-cy="duracao"]').clear().type(dados.duracao);
 
             cy.get('[data-cy="search-instituicao-executora-id"]')
@@ -250,8 +250,9 @@ describe("Submeter uma proposta", () => {
       });
 
       context("Coordenação", () => {
+        beforeEach(() => cy.get('[data-cy="coordenacao"]').click());
+
         it('Preenche "Dados Pessoais" em "Coordenação" com dados válidos e salva.', () => {
-          cy.contains("Coordenação").click();
           cy.get('[data-cy="dados-pessoais"]').click();
 
           cy.fixture("submeter-proposta").then((dados) => {
@@ -293,7 +294,6 @@ describe("Submeter uma proposta", () => {
         });
 
         it('Preenche "Endereço" em "Coordenação" (fluxo Brasil) com dados válidos e salva.', () => {
-          cy.contains("Coordenação").click();
           cy.get('[data-cy="endereco"]').click();
 
           cy.fixture("submeter-proposta").then((dados) => {
@@ -333,7 +333,6 @@ describe("Submeter uma proposta", () => {
         });
 
         it('Preenche "Dados Acadêmicos" em "Coordenação" com dados válidos e salva.', () => {
-          cy.contains("Coordenação").click();
           cy.get('[data-cy="dados-academicos"]').click();
 
           cy.fixture("submeter-proposta").then((dados) => {
@@ -402,7 +401,6 @@ describe("Submeter uma proposta", () => {
         });
 
         it('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
-          cy.contains("Coordenação").click();
           cy.get('[data-cy="dados-profissionais"]').click();
 
           cy.fixture("submeter-proposta").then((dados) => {
@@ -461,8 +459,8 @@ describe("Submeter uma proposta", () => {
       });
 
       context("Apresentação", () => {
+        beforeEach(() => cy.get('[data-cy="apresentacao"]').click());
         it('Preenche "Descrição" em "Apresentação" com dados válidos e salva.', () => {
-          cy.contains("Apresentação").click();
           cy.get('[data-cy="descricao"]').click();
 
           cy.fixture("submeter-proposta").then((dados) => {
@@ -490,6 +488,18 @@ describe("Submeter uma proposta", () => {
             cy.wait(1000);
             cy.contains("Salvo com sucesso!").should("be.visible");
           });
+        });
+
+        it('Preenche "Indicadores de Produção" e salva.', () => {
+          cy.get('[data-cy="indicadores-de-producao"]').click();
+
+          cy.get("table tbody tr td input").each(($input) => {
+            cy.wrap($input).clear().type("1");
+          });
+
+          cy.get('[data-cy="menu-salvar"]').click();
+          cy.wait(1000);
+          cy.contains("Salvo com sucesso!").should("be.visible");
         });
       });
 
