@@ -40,5 +40,10 @@
   "ocupacaoEquipe": "Equipe de desenvolvimento de software e testes automatizados",
   "dataEvento": "11122026",
   "membroNome": "José Pedro Cândido Peter",
-  "funcaoMembro": "Ministrante"
+  "funcaoMembro": "Ministrante",
+  "atividadeTitulo": "Nome da atividade",
+  "atividadeDescricao": "Descrição complexa da atividade",
+  "atividadeMesInicio": "4°",
+  "atividadeDuracao": "4 meses",
+  "atividadeCargaHoraria": "4 horas"
 }

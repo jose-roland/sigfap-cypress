@@ -502,7 +502,7 @@ describe("Submeter uma proposta", () => {
           cy.contains("Salvo com sucesso!").should("be.visible");
         });
 
-        it.only("Adiciona um pesquisador membro e define sua função.", () => {
+        it("Adiciona um pesquisador membro, define sua função e salva.", () => {
           cy.fixture("submeter-proposta").then((dados) => {
             cy.get('[data-cy="membros"]').click();
             cy.get('[data-cy="nome-do-pesquisador"]').type(
@@ -520,6 +520,47 @@ describe("Submeter uma proposta", () => {
             cy.get("table tbody tr td div div div input").type(
               "{downarrow}{enter}",
             );
+
+            cy.get('[data-cy="menu-salvar"]').click();
+            cy.wait(1000);
+            cy.contains("Salvo com sucesso!").should("be.visible");
+          });
+        });
+
+        it("Adiciona uma atividade com dados válidos e salva.", () => {
+          cy.fixture("submeter-proposta").then((dados) => {
+            cy.get('[data-cy="atividades"]').click();
+            cy.get('[data-cy="add-button"]').click();
+
+            cy.get('[data-cy="propostaAtividadeForm.titulo"]')
+              .clear()
+              .type(dados.atividadeTitulo);
+
+            cy.get('[data-cy="propostaAtividadeForm.descricao"]')
+              .clear()
+              .type(dados.atividadeDescricao);
+
+            cy.get('[data-cy="search-mes-inicio"]')
+              .clear()
+              .type(dados.atividadeMesInicio);
+            cy.wait(1000);
+            cy.get('[data-cy="search-mes-inicio"]').type("{downarrow}{enter}");
+
+            cy.get('[data-cy="search-duracao"]')
+              .clear()
+              .type(dados.atividadeDuracao);
+            cy.wait(1000);
+            cy.get('[data-cy="search-duracao"]').type("{downarrow}{enter}");
+
+            cy.get('[data-cy="search-carga-horaria-semanal"]')
+              .clear()
+              .type(dados.atividadeCargaHoraria);
+            cy.wait(1000);
+            cy.get('[data-cy="search-carga-horaria-semanal"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get('[data-cy="propostaAtividade-confirmar"]').click();
 
             cy.get('[data-cy="menu-salvar"]').click();
             cy.wait(1000);
