@@ -974,7 +974,7 @@ describe("Submeter uma proposta", () => {
             });
           });
 
-          it.only("Adiciona uma rubrica de pessoal com dados válidos e salva.", () => {
+          it("Adiciona uma rubrica de pessoal com dados válidos e salva.", () => {
             cy.fixture("submeter-proposta").then((dados) => {
               cy.get('[data-cy="pessoal"]').click();
               cy.get('[data-cy="add-button"]').click();
@@ -1022,6 +1022,35 @@ describe("Submeter uma proposta", () => {
                 .type(dados.justificativa);
 
               cy.get('[data-cy="rubricaPessoal-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+
+          it("Adiciona um encargo com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="encargos"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="rubricaEncargoForm.especificacao"]')
+                .clear()
+                .type(dados.especificacao);
+
+              cy.get('[data-cy="rubricaEncargoForm.valorTotal"]')
+                .clear()
+                .type(dados.custoUnitario);
+
+              cy.get('[data-cy="search-mes-previsto"]').clear().type(dados.mes);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaEncargoForm.justificativa"]')
+                .clear()
+                .type(dados.justificativa);
+
+              cy.get('[data-cy="rubricaEncargo-confirmar"]').click();
 
               cy.get('[data-cy="menu-salvar"]').click();
               cy.wait(1000);
