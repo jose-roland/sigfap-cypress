@@ -333,6 +333,43 @@ describe("Submeter uma proposta", () => {
             cy.contains("Salvo com sucesso!").should("be.visible");
           });
         });
+
+        it('Preenche "Dados Acadêmicos" em "Coordenação" com dados válidos e salva.', () => {
+          cy.contains("Coordenação").click();
+          cy.get('[data-cy="dados-academicos"]').click();
+
+          cy.fixture("submeter-proposta").then((dados) => {
+            cy.get('[data-cy="search-instituicao-id"]')
+              .clear()
+              .type(dados.instituicao);
+            cy.wait(1000);
+            cy.get('[data-cy="search-instituicao-id"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get('[data-cy="search-unidade-id"]').clear().type(dados.unidade);
+            cy.wait(1000);
+            cy.get('[data-cy="search-unidade-id"]').type("{downarrow}{enter}");
+
+            cy.get('[data-cy="search-nivel-academico-id"]')
+              .clear()
+              .type(dados.nivelAcademico);
+            cy.wait(1000);
+            cy.get('[data-cy="search-nivel-academico-id"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get('[data-cy="criadoPor.lattes"]').clear().type(dados.lattes);
+
+            cy.get('[data-cy="criadoPor.linkedin"]')
+              .clear()
+              .type(dados.linkedin);
+
+            cy.get('[data-cy="menu-salvar"]').click();
+            cy.wait(1000);
+            cy.contains("Salvo com sucesso!").should("be.visible");
+          });
+        });
       });
 
       //   it('Vai para seção "Apresentação" e preenche e salva.', () => {
