@@ -250,7 +250,7 @@ describe("Submeter uma proposta", () => {
       });
 
       context("Coordenação", () => {
-        it('Preenche "Dados Pessoais" em "Coordenação" com dados válidos e salva.', () => {
+        it.only('Preenche "Dados Pessoais" em "Coordenação" com dados válidos e salva.', () => {
           cy.contains("Coordenação").click();
           cy.get('[data-cy="dados-pessoais"]').click();
 
@@ -275,12 +275,10 @@ describe("Submeter uma proposta", () => {
             cy.get(".ddi").type(dados.pais + "{downarrow}{enter}");
             cy.wait(1000);
 
-            //TODO: fix
-            // cy.get('[data-cy="criadoPor.celular"]').clear().type(dados.celular);
-            // cy.get('[data-cy="criadoPor.celular"]')
-            //   .invoke("val", "")
-            //   .trigger("input")
-            //   .type(dados.celular);
+            cy.get('[data-cy="criadoPor.celular"]')
+              .focus()
+              .clear()
+              .type(dados.celular, { delay: 50, force: true });
 
             cy.get('[data-cy="search-raca-cor-id"]')
               .clear()
