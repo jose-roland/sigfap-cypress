@@ -1104,29 +1104,61 @@ describe("Submeter uma proposta", () => {
         });
       });
 
-      //   it('Vai para seção "Anexos" e preenche e salva.', () => {
-      //     cy.contains("Anexos").click();
+      context.only("Anexos", () => {
+        beforeEach(() => cy.get('[data-cy="anexos"]').click());
 
-      //     cy.get("#select-categories-documento-proposta-anexo").click();
-      //     cy.get('[data-cy="documento-1"]').click();
+        it('Anexa um documento pessoal em "Documentos Pessoais" e salva.', () => {
+          cy.fixture("submeter-proposta").then((dados) => {
+            cy.get('[data-cy="documentos-pessoais"]').click();
 
-      //     cy.get('input[type="file"]').selectFile(
-      //       "cypress/fixtures/documento-com-foto.pdf",
-      //       { force: true },
-      //     );
+            cy.get("#select-categories-criado-por-usuario-anexo").click();
+            cy.get('[data-cy="documento-de-identificacao-com-f"]').click();
+            cy.contains("Arraste e solte seu arquivo ou selecione o arquivo")
+              .get('input[type="file"]')
+              .selectFile(`cypress/fixtures/${dados.anexoDocumento}`, {
+                force: true,
+              });
 
-      //     cy.get('[data-cy="menu-salvar"]').click();
-      //   });
+            cy.get('[data-cy="menu-salvar"]').click();
+            cy.wait(1000);
+            cy.contains("Salvo com sucesso!").should("be.visible");
+          });
+        });
 
-      //   it('Vai para seção "Finalização" e submete a proposta.', () => {
-      //     cy.contains("Finalização").click();
+        it('Anexa um documento em "Documentos da Proposta" e salva.', () => {
+          cy.fixture("submeter-proposta").then((dados) => {
+            cy.get('[data-cy="documentos-da-proposta"]').click();
 
-      //     cy.get('[data-cy="menu-verificar-pendencias"]').click();
+            cy.get("#select-categories-documento-proposta-anexo").click();
+            cy.get('[data-cy="documento-1"]').click();
+            cy.contains("Arraste e solte seu arquivo ou selecione o arquivo")
+              .get('input[type="file"]')
+              .selectFile(`cypress/fixtures/${dados.anexoDocumento}`, {
+                force: true,
+              });
 
-      //     cy.get('[data-cy="menu-salvar"]').click();
+            cy.get('[data-cy="menu-salvar"]').click();
+            cy.wait(1000);
+            cy.contains("Sucesso").should("be.visible");
+          });
+        });
+      });
 
-      //     cy.get('class="css-1ky4us2 ens3bun6"').first().should("be.visible");
-      //   });
+      context("Finalização", () => {
+        beforeEach(() => cy.get('[data-cy="finalizacao"]').click());
+
+        it('Marca o termo de aceite em "Termo de Aceite" e salva.', () => {
+          cy.get('[data-cy="termo-de-aceite"]').click();
+          cy.wait(2000);
+          cy.get('[data-cy="termo-de-aceite-aceito"]').check({
+            force: true,
+          });
+
+          cy.get('[data-cy="menu-salvar"]').click();
+          cy.wait(1000);
+          cy.contains("Salvo com sucesso!").should("be.visible");
+        });
+      });
     },
   );
 
