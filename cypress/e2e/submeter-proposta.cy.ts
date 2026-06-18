@@ -359,6 +359,38 @@ describe("Submeter uma proposta", () => {
               "{downarrow}{enter}",
             );
 
+            cy.get('[data-cy="add-areas-de-conhecimento"]').click();
+
+            cy.get('[data-cy="search-grande-area-id"]')
+              .clear()
+              .type(dados.grandeArea);
+            cy.wait(1000);
+            cy.get('[data-cy="search-grande-area-id"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get('[data-cy="search-area-id"]').clear().type(dados.area);
+            cy.wait(1000);
+            cy.get('[data-cy="search-area-id"]').type("{downarrow}{enter}");
+
+            cy.get('[data-cy="search-sub-area-id"]')
+              .clear()
+              .type(dados.subArea);
+            cy.wait(1000);
+            cy.get('[data-cy="search-sub-area-id"]').type("{downarrow}{enter}");
+
+            cy.get('[data-cy="search-especialidade-id"]')
+              .clear()
+              .type(dados.especialidade);
+            cy.wait(1000);
+            cy.get('[data-cy="search-especialidade-id"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get(
+              '[data-cy="criadoPor.areaDeConhecimento-confirmar"]',
+            ).click();
+
             cy.get('[data-cy="criadoPor.lattes"]').clear().type(dados.lattes);
 
             cy.get('[data-cy="criadoPor.linkedin"]')
