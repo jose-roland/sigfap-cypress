@@ -250,7 +250,7 @@ describe("Submeter uma proposta", () => {
       });
 
       context("Coordenação", () => {
-        it.only('Preenche "Dados Pessoais" em "Coordenação" com dados válidos e salva.', () => {
+        it('Preenche "Dados Pessoais" em "Coordenação" com dados válidos e salva.', () => {
           cy.contains("Coordenação").click();
           cy.get('[data-cy="dados-pessoais"]').click();
 
@@ -394,6 +394,63 @@ describe("Submeter uma proposta", () => {
             cy.get('[data-cy="criadoPor.linkedin"]')
               .clear()
               .type(dados.linkedin);
+
+            cy.get('[data-cy="menu-salvar"]').click();
+            cy.wait(1000);
+            cy.contains("Salvo com sucesso!").should("be.visible");
+          });
+        });
+
+        it.only('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
+          cy.contains("Coordenação").click();
+          cy.get('[data-cy="dados-profissionais"]').click();
+
+          cy.fixture("submeter-proposta").then((dados) => {
+            cy.get('[data-cy="possui-vinculo-institucional-box"]').then(
+              ($checkbox) => {
+                if (!$checkbox.is(":checked")) {
+                  cy.wrap($checkbox).click();
+                }
+              },
+            );
+
+            cy.get('[data-cy="search-tipo-vinculo-instituciona"]')
+              .clear()
+              .type(dados.tipoVinculo);
+            cy.wait(1000);
+            cy.get('[data-cy="search-tipo-vinculo-instituciona"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get('[data-cy="possui-vinculo-empregaticio-box"]').then(
+              ($checkbox) => {
+                if (!$checkbox.is(":checked")) {
+                  cy.wrap($checkbox).click();
+                }
+              },
+            );
+
+            cy.get('[data-cy="criadoPor.vinculoInstitucional.inicioServico"]')
+              .clear()
+              .type(dados.inicioServico);
+            cy.get("body").click(0, 0);
+
+            cy.get('[data-cy="search-regime-trabalho-id"]')
+              .clear()
+              .type(dados.regimeTrabalho);
+            cy.wait(1000);
+            cy.get('[data-cy="search-regime-trabalho-id"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get('[data-cy="criadoPor.vinculoInstitucional.funcao"]')
+              .clear()
+              .type(dados.funcao);
+
+            cy.get('[data-cy="criadoPor.vinculoInstitucional.inicioFuncao"]')
+              .clear()
+              .type(dados.inicioFuncao);
+            cy.get("body").click(0, 0);
 
             cy.get('[data-cy="menu-salvar"]').click();
             cy.wait(1000);
