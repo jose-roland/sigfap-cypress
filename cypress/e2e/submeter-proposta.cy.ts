@@ -1057,6 +1057,50 @@ describe("Submeter uma proposta", () => {
               cy.contains("Salvo com sucesso!").should("be.visible");
             });
           });
+
+          it("Adiciona uma bolsa com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="bolsa"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="search-modalidade-bolsa-id"]')
+                .clear()
+                .type(dados.bolsaModalidade);
+              cy.wait(1000);
+              cy.get('[data-cy="search-modalidade-bolsa-id"]').type("{enter}");
+
+              cy.get('[data-cy="search-nivel-bolsa-id"]')
+                .clear()
+                .type(dados.bolsaNivel);
+              cy.wait(1000);
+              cy.get('[data-cy="search-nivel-bolsa-id"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaBolsaForm.quantidade"]')
+                .clear()
+                .type(dados.quantidade);
+
+              cy.get('[data-cy="search-duracao"]')
+                .clear()
+                .type(dados.quantidade)
+                .type("{enter}");
+              cy.wait(1000);
+              cy.get('[data-cy="search-duracao"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaBolsaForm.valorTotal"]')
+                .clear()
+                .type(dados.custoUnitario);
+
+              cy.get('[data-cy="rubricaBolsaForm.justificativa"]')
+                .clear()
+                .type(dados.justificativa);
+
+              cy.get('[data-cy="rubricaBolsa-confirmar"]').click();
+              cy.wait(1000);
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
         });
       });
 

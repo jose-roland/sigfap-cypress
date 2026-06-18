@@ -64,5 +64,7 @@
   "servicoTipo": "Pessoa jurídica",
   "pessoalFuncao": "Desenvolvedor",
   "pessoalFormacaoProfissional": "Ciência da Computação",
-  "pessoalPerfilDesejado": "Profissional com experiência em testes automatizados"
+  "pessoalPerfilDesejado": "Profissional com experiência em testes automatizados",
+  "bolsaModalidade": "AT",
+  "bolsaNivel": "NM"
 }
