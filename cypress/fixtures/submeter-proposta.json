@@ -45,5 +45,11 @@
   "atividadeDescricao": "Descrição complexa da atividade",
   "atividadeMesInicio": "4°",
   "atividadeDuracao": "4 meses",
-  "atividadeCargaHoraria": "4 horas"
+  "atividadeCargaHoraria": "4 horas",
+  "diariaMesPrevisto": "4°",
+  "diariaNumero": "4",
+  "diariaCustoUnitario": "102464",
+  "diariaMoedaEstrangeira": "Dólar Americano",
+  "diariaJustificativa": "Justificativa para a diária internacional",
+  "diariaEstadoRegiao": "Tóquio"
 }

@@ -567,6 +567,106 @@ describe("Submeter uma proposta", () => {
             cy.contains("Salvo com sucesso!").should("be.visible");
           });
         });
+
+        context("Orçamento", () => {
+          beforeEach(() => cy.get('[data-cy="orcamento"]').click());
+
+          it("Adiciona uma diária nacional (Brasil) com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="diarias"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="search-pais-id"]').clear().type(dados.pais);
+              cy.wait(1000);
+              cy.get('[data-cy="search-pais-id"]').type("{downarrow}{enter}");
+
+              cy.get('[data-cy="search-estado-id"]').clear().type(dados.estado);
+              cy.wait(1000);
+              cy.get('[data-cy="search-estado-id"]').type("{downarrow}{enter}");
+
+              cy.get('[data-cy="search-municipio"]')
+                .clear()
+                .type(dados.municipio);
+              cy.wait(1000);
+              cy.get('[data-cy="search-municipio"]').type("{downarrow}{enter}");
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.diariaMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type(
+                "{downarrow}{enter}",
+              );
+
+              cy.get('[data-cy="rubricaDiariaForm.numeroDiaria"]')
+                .clear()
+                .type(dados.diariaNumero);
+
+              cy.get('[data-cy="rubricaDiariaForm.custoUnitario"]')
+                .clear()
+                .type(dados.diariaCustoUnitario);
+
+              cy.get('[data-cy="rubricaDiaria-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+
+          it("Adiciona uma diária internacional com moeda estrangeira e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="diarias"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="search-pais-id"]')
+                .clear()
+                .type(dados.paisInternacional);
+              cy.wait(1000);
+              cy.get('[data-cy="search-pais-id"]').type("{downarrow}{enter}");
+
+              cy.get('[data-cy="rubricaDiariaForm.estadoRegiao"]')
+                .clear()
+                .type(dados.diariaEstadoRegiao);
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.diariaMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type(
+                "{downarrow}{enter}",
+              );
+
+              cy.get('[data-cy="rubricaDiariaForm.numeroDiaria"]')
+                .clear()
+                .type(dados.diariaNumero);
+
+              cy.get('[data-cy="rubricaDiariaForm.custoUnitario"]')
+                .clear()
+                .type(dados.diariaCustoUnitario);
+
+              cy.get('[data-cy="tem-moeda-estrangeira-box"]').click();
+
+              cy.get('[data-cy="search-moeda-estrangeira-id"]')
+                .clear()
+                .type(dados.diariaMoedaEstrangeira);
+              cy.wait(1000);
+              cy.get('[data-cy="search-moeda-estrangeira-id"]').type(
+                "{downarrow}{enter}",
+              );
+
+              cy.get('[data-cy="rubricaDiariaForm.justificativa"]')
+                .clear()
+                .type(dados.diariaJustificativa);
+
+              cy.get('[data-cy="rubricaDiaria-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+        });
       });
 
       //   it('Vai para seção "Anexos" e preenche e salva.', () => {
