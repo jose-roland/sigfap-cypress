@@ -962,6 +962,37 @@ describe("Submeter uma proposta", () => {
               cy.contains("Salvo com sucesso!").should("be.visible");
             });
           });
+
+          it("Adiciona um serviço de terceiros com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="servicos-de-terceiros"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="rubricaServicoTerceiroForm.especificacao"]')
+                .clear()
+                .type(dados.servicoEspecificacao);
+
+              cy.get('[data-cy="search-tipo"]').clear().type(dados.servicoTipo);
+              cy.wait(1000);
+              cy.get('[data-cy="search-tipo"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaServicoTerceiroForm.valorTotal"]')
+                .clear()
+                .type(dados.servicoCustoUnitario);
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.servicoMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaServicoTerceiro-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
         });
       });
 

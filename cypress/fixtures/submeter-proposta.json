@@ -85,5 +85,10 @@
   "hospedagemQuantidade": "4",
   "hospedagemCustoUnitario": "102464",
   "hospedagemMoedaEstrangeira": "Dólar Americano",
-  "hospedagemJustificativa": "Justificativa para a hospedagem internacional"
+  "hospedagemJustificativa": "Justificativa para a hospedagem internacional",
+  "servicoEspecificacao": "Especificação do serviço de terceiros",
+  "servicoTipo": "Pessoa jurídica",
+  "servicoCustoUnitario": "102464",
+  "servicoMesPrevisto": "4°",
+  "servicoJustificativa": "Justificativa para o serviço de terceiros"
 }
