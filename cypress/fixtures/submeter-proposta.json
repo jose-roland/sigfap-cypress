@@ -57,5 +57,11 @@
   "materialMesPrevisto": "4°",
   "materialQuantidade": "4",
   "materialCustoUnitario": "102464",
-  "materialJustificativa": "Justificativa para o material de consumo"
+  "materialJustificativa": "Justificativa para o material de consumo",
+  "materialPermanenteEspecificacao": "Especificação do material permanente",
+  "materialPermanenteTipoOrigem": "Nacional",
+  "materialPermanenteMesPrevisto": "4°",
+  "materialPermanenteQuantidade": "4",
+  "materialPermanenteCustoUnitario": "102464",
+  "materialPermanenteJustificativa": "Justificativa para o material permanente"
 }

@@ -320,7 +320,8 @@ describe("Submeter uma proposta", () => {
 
             cy.get('[data-cy="search-municipio"]')
               .clear()
-              .type(dados.enderecoMunicipio);
+              .type(dados.enderecoMunicipio)
+              .type("{enter}");
 
             cy.get('[data-cy="criadoPor.endereco.complemento"]')
               .clear()
@@ -701,6 +702,44 @@ describe("Submeter uma proposta", () => {
                 .type(dados.materialCustoUnitario);
 
               cy.get('[data-cy="rubricaMaterialConsumo-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+
+          it("Adiciona um material permanente com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="material-permanente"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="rubricaMaterialPermanenteForm.especificacao"]')
+                .clear()
+                .type(dados.materialPermanenteEspecificacao);
+
+              cy.get('[data-cy="search-tipo-origem"]')
+                .clear()
+                .type(dados.materialPermanenteTipoOrigem)
+                .type("{enter}");
+              cy.wait(1000);
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.materialPermanenteMesPrevisto);
+              cy.wait(1000);
+
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaMaterialPermanenteForm.quantidade"]')
+                .clear()
+                .type(dados.materialPermanenteQuantidade);
+
+              cy.get('[data-cy="rubricaMaterialPermanenteForm.custoUnitario"]')
+                .clear()
+                .type(dados.materialPermanenteCustoUnitario);
+
+              cy.get('[data-cy="rubricaMaterialPermanente-confirmar"]').click();
 
               cy.get('[data-cy="menu-salvar"]').click();
               cy.wait(1000);
