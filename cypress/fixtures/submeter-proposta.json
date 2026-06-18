@@ -1,4 +1,8 @@
 {
+  "grandeArea": "Ciências Exatas e da Terra",
+  "area": "Ciência da Computação",
+  "subArea": "Metodologia e Técnicas da Computação",
+  "especialidade": "Engenharia de Software",
   "tituloProjeto": "Proposta do edital de lançamento de notas",
   "duracao": "12",
   "instituicao": "UFMS",
@@ -6,10 +10,16 @@
   "coordenadorNome": "Coordenador Teste",
   "sexo": "Masculino",
   "pais": "Brasil",
+  "paisInternacional": "Japão",
+  "dataNascimento": "01011990",
+  "celular": "67991234567",
+  "racaCor": "Preto(a)",
   "estado": "Mato Grosso do Sul",
   "municipio": "Campo Grande",
   "apresentacaoInformacoes": "Informações relevantes do teste Cypress",
   "apresentacaoExperiencia": "Experiência do coordenador em testes",
   "apresentacaoObjetivo": "Objetivo geral: Validar persistência",
-  "anexoDocumento": "documento-com-foto.pdf"
+  "anexoDocumento": "documento-com-foto.pdf",
+  "ocupacaoEquipe": "Equipe de desenvolvimento de software e testes automatizados",
+  "dataEvento": "11122026"
 }
