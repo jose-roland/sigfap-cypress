@@ -63,5 +63,21 @@
   "materialPermanenteMesPrevisto": "4°",
   "materialPermanenteQuantidade": "4",
   "materialPermanenteCustoUnitario": "102464",
-  "materialPermanenteJustificativa": "Justificativa para o material permanente"
+  "materialPermanenteJustificativa": "Justificativa para o material permanente",
+  "passagemTrechoNacional": "Nacional",
+  "passagemTrechoInternacional": "Internacional",
+  "passagemTipo": "Aérea",
+  "passagemEstadoOrigem": "Amazonas",
+  "passagemMunicipioOrigem": "Manaus",
+  "passagemEstadoDestino": "Mato Grosso do Sul",
+  "passagemMunicipioDestino": "Campo Grande",
+  "passagemPaisOrigem": "Japão",
+  "passagemEstadoRegiaoOrigem": "Kyoto",
+  "passagemPaisDestino": "Coreia do Sul",
+  "passagemEstadoRegiaoDestino": "Seoul",
+  "passagemMesPrevisto": "4°",
+  "passagemQuantidade": "4",
+  "passagemCustoUnitario": "102464",
+  "passagemMoedaEstrangeira": "Dólar Americano",
+  "passagemJustificativa": "Justificativa para a passagem internacional"
 }

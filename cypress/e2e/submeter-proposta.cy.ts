@@ -124,16 +124,14 @@ describe("Submeter uma proposta", () => {
               .type(dados.instituicao);
             cy.wait(1000);
             cy.get('[data-cy="search-instituicao-executora-id"]').type(
-              "{downarrow}{enter}",
+              "{enter}",
             );
 
             cy.get('[data-cy="search-unidade-executora-id"]')
               .clear()
               .type(dados.unidade);
             cy.wait(1000);
-            cy.get('[data-cy="search-unidade-executora-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-unidade-executora-id"]').type("{enter}");
             cy.get('[data-cy="menu-salvar"]').click();
             cy.wait(1000);
             cy.contains("Salvo com sucesso!").should("be.visible");
@@ -148,27 +146,23 @@ describe("Submeter uma proposta", () => {
               .clear()
               .type(dados.grandeArea);
             cy.wait(1000);
-            cy.get('[data-cy="search-grande-area-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-grande-area-id"]').type("{enter}");
 
             cy.get('[data-cy="search-area-id"]').clear().type(dados.area);
             cy.wait(1000);
-            cy.get('[data-cy="search-area-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-area-id"]').type("{enter}");
 
             cy.get('[data-cy="search-sub-area-id"]')
               .clear()
               .type(dados.subArea);
             cy.wait(1000);
-            cy.get('[data-cy="search-sub-area-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-sub-area-id"]').type("{enter}");
 
             cy.get('[data-cy="search-especialidade-id"]')
               .clear()
               .type(dados.especialidade);
             cy.wait(1000);
-            cy.get('[data-cy="search-especialidade-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-especialidade-id"]').type("{enter}");
 
             cy.get('[data-cy="areaDeConhecimento-confirmar"]').click();
 
@@ -231,7 +225,7 @@ describe("Submeter uma proposta", () => {
 
             cy.get('[data-cy="search-estado-id"]').clear().type(dados.estado);
             cy.wait(1000);
-            cy.get('[data-cy="search-estado-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-estado-id"]').type("{enter}");
 
             cy.get('[data-cy="search-abrangencia-municipio"]')
               .clear()
@@ -262,18 +256,18 @@ describe("Submeter uma proposta", () => {
 
             cy.get('[data-cy="search-sexo"]').clear().type(dados.sexo);
             cy.wait(1000);
-            cy.get('[data-cy="search-sexo"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-sexo"]').type("{enter}");
 
             cy.get('[data-cy="search-pais-id"]').clear().type(dados.pais);
             cy.wait(1000);
-            cy.get('[data-cy="search-pais-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-pais-id"]').type("{enter}");
 
             cy.get('[data-cy="criadoPor.dataNascimento"]')
               .clear()
               .type(dados.dataNascimento);
             cy.get("body").click(0, 0);
 
-            cy.get(".ddi").type(dados.pais + "{downarrow}{enter}");
+            cy.get(".ddi").type(dados.pais + "{enter}");
             cy.wait(1000);
 
             cy.get('[data-cy="criadoPor.celular"]')
@@ -285,7 +279,7 @@ describe("Submeter uma proposta", () => {
               .clear()
               .type(dados.racaCor);
             cy.wait(1000);
-            cy.get('[data-cy="search-raca-cor-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-raca-cor-id"]').type("{enter}");
 
             cy.get('[data-cy="menu-salvar"]').click();
             cy.wait(1000);
@@ -308,7 +302,7 @@ describe("Submeter uma proposta", () => {
 
             cy.get('[data-cy="search-estado"]').clear().type(dados.estado);
             cy.wait(1000);
-            cy.get('[data-cy="search-estado"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-estado"]').type("{enter}");
 
             cy.get('[data-cy="criadoPor.endereco.numero"]')
               .clear()
@@ -341,21 +335,17 @@ describe("Submeter uma proposta", () => {
               .clear()
               .type(dados.instituicao);
             cy.wait(1000);
-            cy.get('[data-cy="search-instituicao-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-instituicao-id"]').type("{enter}");
 
             cy.get('[data-cy="search-unidade-id"]').clear().type(dados.unidade);
             cy.wait(1000);
-            cy.get('[data-cy="search-unidade-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-unidade-id"]').type("{enter}");
 
             cy.get('[data-cy="search-nivel-academico-id"]')
               .clear()
               .type(dados.nivelAcademico);
             cy.wait(1000);
-            cy.get('[data-cy="search-nivel-academico-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-nivel-academico-id"]').type("{enter}");
 
             cy.get('[data-cy="add-areas-de-conhecimento"]').click();
 
@@ -363,27 +353,23 @@ describe("Submeter uma proposta", () => {
               .clear()
               .type(dados.grandeArea);
             cy.wait(1000);
-            cy.get('[data-cy="search-grande-area-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-grande-area-id"]').type("{enter}");
 
             cy.get('[data-cy="search-area-id"]').clear().type(dados.area);
             cy.wait(1000);
-            cy.get('[data-cy="search-area-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-area-id"]').type("{enter}");
 
             cy.get('[data-cy="search-sub-area-id"]')
               .clear()
               .type(dados.subArea);
             cy.wait(1000);
-            cy.get('[data-cy="search-sub-area-id"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-sub-area-id"]').type("{enter}");
 
             cy.get('[data-cy="search-especialidade-id"]')
               .clear()
               .type(dados.especialidade);
             cy.wait(1000);
-            cy.get('[data-cy="search-especialidade-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-especialidade-id"]').type("{enter}");
 
             cy.get(
               '[data-cy="criadoPor.areaDeConhecimento-confirmar"]',
@@ -401,7 +387,7 @@ describe("Submeter uma proposta", () => {
           });
         });
 
-        it('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
+        it.only('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
           cy.get('[data-cy="dados-profissionais"]').click();
 
           cy.fixture("submeter-proposta").then((dados) => {
@@ -419,7 +405,7 @@ describe("Submeter uma proposta", () => {
               .type(dados.tipoVinculo);
             cy.wait(1000);
             cy.get('[data-cy="search-tipo-vinculo-instituciona"]').type(
-              "{downarrow}{enter}",
+              "{enter}",
             );
 
             cy.get('[data-cy="possui-vinculo-empregaticio-box"]').then(
@@ -439,9 +425,7 @@ describe("Submeter uma proposta", () => {
               .clear()
               .type(dados.regimeTrabalho);
             cy.wait(1000);
-            cy.get('[data-cy="search-regime-trabalho-id"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-regime-trabalho-id"]').type("{enter}");
 
             cy.get('[data-cy="criadoPor.vinculoInstitucional.funcao"]')
               .clear()
@@ -506,9 +490,7 @@ describe("Submeter uma proposta", () => {
         it("Adiciona um pesquisador membro, define sua função e salva.", () => {
           cy.fixture("submeter-proposta").then((dados) => {
             cy.get('[data-cy="membros"]').click();
-            cy.get('[data-cy="nome-do-pesquisador"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="nome-do-pesquisador"]').type("{enter}");
 
             cy.contains("Adicionar").click();
             cy.get('[data-cy="sim-continuar-button"]').click();
@@ -518,9 +500,7 @@ describe("Submeter uma proposta", () => {
               .clear()
               .type(dados.funcaoMembro);
             cy.wait(1000);
-            cy.get("table tbody tr td div div div input").type(
-              "{downarrow}{enter}",
-            );
+            cy.get("table tbody tr td div div div input").type("{enter}");
 
             cy.get('[data-cy="menu-salvar"]').click();
             cy.wait(1000);
@@ -545,21 +525,19 @@ describe("Submeter uma proposta", () => {
               .clear()
               .type(dados.atividadeMesInicio);
             cy.wait(1000);
-            cy.get('[data-cy="search-mes-inicio"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-mes-inicio"]').type("{enter}");
 
             cy.get('[data-cy="search-duracao"]')
               .clear()
               .type(dados.atividadeDuracao);
             cy.wait(1000);
-            cy.get('[data-cy="search-duracao"]').type("{downarrow}{enter}");
+            cy.get('[data-cy="search-duracao"]').type("{enter}");
 
             cy.get('[data-cy="search-carga-horaria-semanal"]')
               .clear()
               .type(dados.atividadeCargaHoraria);
             cy.wait(1000);
-            cy.get('[data-cy="search-carga-horaria-semanal"]').type(
-              "{downarrow}{enter}",
-            );
+            cy.get('[data-cy="search-carga-horaria-semanal"]').type("{enter}");
 
             cy.get('[data-cy="propostaAtividade-confirmar"]').click();
 
@@ -579,25 +557,23 @@ describe("Submeter uma proposta", () => {
 
               cy.get('[data-cy="search-pais-id"]').clear().type(dados.pais);
               cy.wait(1000);
-              cy.get('[data-cy="search-pais-id"]').type("{downarrow}{enter}");
+              cy.get('[data-cy="search-pais-id"]').type("{enter}");
 
               cy.get('[data-cy="search-estado-id"]').clear().type(dados.estado);
               cy.wait(1000);
-              cy.get('[data-cy="search-estado-id"]').type("{downarrow}{enter}");
+              cy.get('[data-cy="search-estado-id"]').type("{enter}");
 
               cy.get('[data-cy="search-municipio"]')
                 .clear()
                 .type(dados.municipio);
               cy.wait(1000);
-              cy.get('[data-cy="search-municipio"]').type("{downarrow}{enter}");
+              cy.get('[data-cy="search-municipio"]').type("{enter}");
 
               cy.get('[data-cy="search-mes-previsto"]')
                 .clear()
                 .type(dados.diariaMesPrevisto);
               cy.wait(1000);
-              cy.get('[data-cy="search-mes-previsto"]').type(
-                "{downarrow}{enter}",
-              );
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
 
               cy.get('[data-cy="rubricaDiariaForm.numeroDiaria"]')
                 .clear()
@@ -624,7 +600,7 @@ describe("Submeter uma proposta", () => {
                 .clear()
                 .type(dados.paisInternacional);
               cy.wait(1000);
-              cy.get('[data-cy="search-pais-id"]').type("{downarrow}{enter}");
+              cy.get('[data-cy="search-pais-id"]').type("{enter}");
 
               cy.get('[data-cy="rubricaDiariaForm.estadoRegiao"]')
                 .clear()
@@ -634,9 +610,7 @@ describe("Submeter uma proposta", () => {
                 .clear()
                 .type(dados.diariaMesPrevisto);
               cy.wait(1000);
-              cy.get('[data-cy="search-mes-previsto"]').type(
-                "{downarrow}{enter}",
-              );
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
 
               cy.get('[data-cy="rubricaDiariaForm.numeroDiaria"]')
                 .clear()
@@ -652,9 +626,7 @@ describe("Submeter uma proposta", () => {
                 .clear()
                 .type(dados.diariaMoedaEstrangeira);
               cy.wait(1000);
-              cy.get('[data-cy="search-moeda-estrangeira-id"]').type(
-                "{downarrow}{enter}",
-              );
+              cy.get('[data-cy="search-moeda-estrangeira-id"]').type("{enter}");
 
               cy.get('[data-cy="rubricaDiariaForm.justificativa"]')
                 .clear()
@@ -681,17 +653,13 @@ describe("Submeter uma proposta", () => {
                 .clear()
                 .type(dados.materialUnidadeMedida);
               cy.wait(1000);
-              cy.get('[data-cy="search-unidade-medida"]').type(
-                "{downarrow}{enter}",
-              );
+              cy.get('[data-cy="search-unidade-medida"]').type("{enter}");
 
               cy.get('[data-cy="search-mes-previsto"]')
                 .clear()
                 .type(dados.materialMesPrevisto);
               cy.wait(1000);
-              cy.get('[data-cy="search-mes-previsto"]').type(
-                "{downarrow}{enter}",
-              );
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
 
               cy.get('[data-cy="rubricaMaterialConsumoForm.quantidade"]')
                 .clear()
@@ -740,6 +708,140 @@ describe("Submeter uma proposta", () => {
                 .type(dados.materialPermanenteCustoUnitario);
 
               cy.get('[data-cy="rubricaMaterialPermanente-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+
+          it("Adiciona uma passagem nacional com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="passagens"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="search-trecho"]')
+                .clear()
+                .type(dados.passagemTrechoNacional);
+              cy.wait(1000);
+              cy.get('[data-cy="search-trecho"]').type("{enter}");
+
+              cy.get('[data-cy="search-tipo"]')
+                .clear()
+                .type(dados.passagemTipo);
+              cy.wait(1000);
+              cy.get('[data-cy="search-tipo"]').type("{enter}");
+
+              cy.get('[data-cy="search-estado-origem-id"]')
+                .clear()
+                .type(dados.passagemEstadoOrigem);
+              cy.wait(1000);
+              cy.get('[data-cy="search-estado-origem-id"]').type("{enter}");
+
+              cy.get('[data-cy="search-municipio-origem"]')
+                .clear()
+                .type(dados.passagemMunicipioOrigem);
+              cy.wait(1000);
+              cy.get('[data-cy="search-municipio-origem"]').type("{enter}");
+
+              cy.get('[data-cy="estado-destino-id"]')
+                .clear()
+                .type(dados.passagemEstadoDestino);
+              cy.wait(1000);
+              cy.get('[data-cy="estado-destino-id"]').type("{enter}");
+
+              cy.get('[data-cy="search-municipio-destino"]')
+                .clear()
+                .type(dados.passagemMunicipioDestino);
+              cy.wait(1000);
+              cy.get('[data-cy="search-municipio-destino"]').type("{enter}");
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.passagemMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaPassagemForm.quantidade"]')
+                .clear()
+                .type(dados.passagemQuantidade);
+
+              cy.get('[data-cy="rubricaPassagemForm.custoUnitario"]')
+                .clear()
+                .type(dados.passagemCustoUnitario);
+
+              cy.get('[data-cy="rubricaPassagem-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+
+          it("Adiciona uma passagem internacional com moeda estrangeira e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="passagens"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="search-trecho"]')
+                .clear()
+                .type(dados.passagemTrechoInternacional);
+              cy.wait(1000);
+              cy.get('[data-cy="search-trecho"]').type("{enter}");
+
+              cy.get('[data-cy="search-tipo"]')
+                .clear()
+                .type(dados.passagemTipo);
+              cy.wait(1000);
+              cy.get('[data-cy="search-tipo"]').type("{enter}");
+
+              cy.get('[data-cy="search-pais-origem-id"]')
+                .clear()
+                .type(dados.passagemPaisOrigem);
+              cy.wait(1000);
+              cy.get('[data-cy="search-pais-origem-id"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaPassagemForm.estadoRegiaoOrigem"]')
+                .clear()
+                .type(dados.passagemEstadoRegiaoOrigem);
+
+              cy.get('[data-cy="search-pais-destino-id"]')
+                .clear()
+                .type(dados.passagemPaisDestino);
+              cy.wait(1000);
+              cy.get('[data-cy="search-pais-destino-id"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaPassagemForm.estadoRegiaoDestino"]')
+                .clear()
+                .type(dados.passagemEstadoRegiaoDestino);
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.passagemMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaPassagemForm.quantidade"]')
+                .clear()
+                .type(dados.passagemQuantidade);
+
+              cy.get('[data-cy="rubricaPassagemForm.custoUnitario"]')
+                .clear()
+                .type(dados.passagemCustoUnitario);
+
+              cy.get('[data-cy="tem-moeda-estrangeira-box"]').click();
+
+              cy.get('[data-cy="search-moeda-estrangeira-id"]')
+                .clear()
+                .type(dados.passagemMoedaEstrangeira);
+              cy.wait(1000);
+              cy.get('[data-cy="search-moeda-estrangeira-id"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaPassagemForm.justificativa"]')
+                .clear()
+                .type(dados.passagemJustificativa);
+
+              cy.get('[data-cy="rubricaPassagem-confirmar"]').click();
 
               cy.get('[data-cy="menu-salvar"]').click();
               cy.wait(1000);
