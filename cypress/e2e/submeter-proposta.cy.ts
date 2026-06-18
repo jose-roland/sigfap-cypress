@@ -501,6 +501,31 @@ describe("Submeter uma proposta", () => {
           cy.wait(1000);
           cy.contains("Salvo com sucesso!").should("be.visible");
         });
+
+        it.only("Adiciona um pesquisador membro e define sua função.", () => {
+          cy.fixture("submeter-proposta").then((dados) => {
+            cy.get('[data-cy="membros"]').click();
+            cy.get('[data-cy="nome-do-pesquisador"]').type(
+              "{downarrow}{enter}",
+            );
+
+            cy.contains("Adicionar").click();
+            cy.get('[data-cy="sim-continuar-button"]').click();
+            cy.get('[data-cy="confirmar-button"]').click();
+
+            cy.get("table tbody tr td div div div input")
+              .clear()
+              .type(dados.funcaoMembro);
+            cy.wait(1000);
+            cy.get("table tbody tr td div div div input").type(
+              "{downarrow}{enter}",
+            );
+
+            cy.get('[data-cy="menu-salvar"]').click();
+            cy.wait(1000);
+            cy.contains("Salvo com sucesso!").should("be.visible");
+          });
+        });
       });
 
       //   it('Vai para seção "Anexos" e preenche e salva.', () => {
