@@ -666,6 +666,47 @@ describe("Submeter uma proposta", () => {
               cy.contains("Salvo com sucesso!").should("be.visible");
             });
           });
+
+          it("Adiciona um material de consumo com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="material-de-consumo"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="rubricaMaterialConsumoForm.especificacao"]')
+                .clear()
+                .type(dados.materialEspecificacao);
+
+              cy.get('[data-cy="search-unidade-medida"]')
+                .clear()
+                .type(dados.materialUnidadeMedida);
+              cy.wait(1000);
+              cy.get('[data-cy="search-unidade-medida"]').type(
+                "{downarrow}{enter}",
+              );
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.materialMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type(
+                "{downarrow}{enter}",
+              );
+
+              cy.get('[data-cy="rubricaMaterialConsumoForm.quantidade"]')
+                .clear()
+                .type(dados.materialQuantidade);
+
+              cy.get('[data-cy="rubricaMaterialConsumoForm.custoUnitario"]')
+                .clear()
+                .type(dados.materialCustoUnitario);
+
+              cy.get('[data-cy="rubricaMaterialConsumo-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
         });
       });
 

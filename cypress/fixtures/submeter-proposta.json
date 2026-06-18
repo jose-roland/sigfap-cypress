@@ -51,5 +51,11 @@
   "diariaCustoUnitario": "102464",
   "diariaMoedaEstrangeira": "Dólar Americano",
   "diariaJustificativa": "Justificativa para a diária internacional",
-  "diariaEstadoRegiao": "Tóquio"
+  "diariaEstadoRegiao": "Tóquio",
+  "materialEspecificacao": "Especificação do material de consumo",
+  "materialUnidadeMedida": "Unidade(un)",
+  "materialMesPrevisto": "4°",
+  "materialQuantidade": "4",
+  "materialCustoUnitario": "102464",
+  "materialJustificativa": "Justificativa para o material de consumo"
 }
