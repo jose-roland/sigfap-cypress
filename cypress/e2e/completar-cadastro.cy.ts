@@ -18,8 +18,13 @@ describe("Completar cadastro do usuário", () => {
             cy.fixture("completar-cadastro").then((endereco) => {
             
                 cy.get('[data-cy="endereco"]').click();
-            
-                cy.get('[data-cy="endereco.cep"]').clear().type(endereco.cep);
+
+                cy.get('[data-cy="endereco.cep"]').clear().type(endereco.cep + "{enter}");
+
+                cy.get('[data-cy="endereco.logradouro"]').should('have.value', endereco.logradouro);
+                cy.get('[data-cy="endereco.bairro"]').should('have.value', endereco.bairro);
+                cy.get('[data-cy="search-estado"]').should('have.value', endereco.estado);
+                cy.get('[data-cy="search-municipio"]').should('have.value', endereco.municipio);
             
                 cy.get('[data-cy="endereco.numero"]').clear().type(endereco.numero);
             
