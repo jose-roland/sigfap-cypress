@@ -387,7 +387,7 @@ describe("Submeter uma proposta", () => {
           });
         });
 
-        it.only('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
+        it('Preenche "Dados Profissionais" em "Coordenação" com dados válidos e salva.', () => {
           cy.get('[data-cy="dados-profissionais"]').click();
 
           cy.fixture("submeter-proposta").then((dados) => {
@@ -842,6 +842,120 @@ describe("Submeter uma proposta", () => {
                 .type(dados.passagemJustificativa);
 
               cy.get('[data-cy="rubricaPassagem-confirmar"]').click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+
+          it("Adiciona uma hospedagem e alimentação nacional (Brasil) com dados válidos e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="hospedagem-e-alimentacao"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="search-pais-id"]').clear().type(dados.pais);
+              cy.wait(1000);
+              cy.get('[data-cy="search-pais-id"]').type("{enter}");
+
+              cy.get('[data-cy="search-estado-id"]').clear().type(dados.estado);
+              cy.wait(1000);
+              cy.get('[data-cy="search-estado-id"]').type("{enter}");
+
+              cy.get('[data-cy="search-municipio"]')
+                .clear()
+                .type(dados.municipio);
+              cy.wait(1000);
+              cy.get('[data-cy="search-municipio"]').type("{enter}");
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacaoForm.especificacao"]',
+              )
+                .clear()
+                .type(dados.hospedagemJustificativa);
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.hospedagemMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaHospedagemAlimentacaoForm.quantidade"]')
+                .clear()
+                .type(dados.hospedagemQuantidade);
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacaoForm.custoUnitario"]',
+              )
+                .clear()
+                .type(dados.hospedagemCustoUnitario);
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacao-confirmar"]',
+              ).click();
+
+              cy.get('[data-cy="menu-salvar"]').click();
+              cy.wait(1000);
+              cy.contains("Salvo com sucesso!").should("be.visible");
+            });
+          });
+
+          it("Adiciona uma hospedagem e alimentação internacional com moeda estrangeira e salva.", () => {
+            cy.fixture("submeter-proposta").then((dados) => {
+              cy.get('[data-cy="hospedagem-e-alimentacao"]').click();
+              cy.get('[data-cy="add-button"]').click();
+
+              cy.get('[data-cy="search-pais-id"]')
+                .clear()
+                .type(dados.paisInternacional);
+              cy.wait(1000);
+              cy.get('[data-cy="search-pais-id"]').type("{enter}");
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacaoForm.estadoRegiao"]',
+              )
+                .clear()
+                .type(dados.hospedagemEstadoRegiao);
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacaoForm.especificacao"]',
+              )
+                .clear()
+                .type(dados.hospedagemJustificativa);
+
+              cy.get('[data-cy="search-mes-previsto"]')
+                .clear()
+                .type(dados.hospedagemMesPrevisto);
+              cy.wait(1000);
+              cy.get('[data-cy="search-mes-previsto"]').type("{enter}");
+
+              cy.get('[data-cy="rubricaHospedagemAlimentacaoForm.quantidade"]')
+                .clear()
+                .type(dados.hospedagemQuantidade);
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacaoForm.custoUnitario"]',
+              )
+                .clear()
+                .type(dados.hospedagemCustoUnitario);
+
+              cy.get('[data-cy="tem-moeda-estrangeira-box"]').click();
+
+              cy.get('[data-cy="search-moeda-estrangeira-id"]')
+                .clear()
+                .type(dados.hospedagemMoedaEstrangeira);
+              cy.wait(1000);
+              cy.get('[data-cy="search-moeda-estrangeira-id"]').type("{enter}");
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacaoForm.justificativa"]',
+              )
+                .clear()
+                .type(dados.hospedagemJustificativa);
+
+              cy.get(
+                '[data-cy="rubricaHospedagemAlimentacao-confirmar"]',
+              ).click();
 
               cy.get('[data-cy="menu-salvar"]').click();
               cy.wait(1000);

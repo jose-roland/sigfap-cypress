@@ -79,5 +79,11 @@
   "passagemQuantidade": "4",
   "passagemCustoUnitario": "102464",
   "passagemMoedaEstrangeira": "Dólar Americano",
-  "passagemJustificativa": "Justificativa para a passagem internacional"
+  "passagemJustificativa": "Justificativa para a passagem internacional",
+  "hospedagemEstadoRegiao": "Kyoto",
+  "hospedagemMesPrevisto": "4°",
+  "hospedagemQuantidade": "4",
+  "hospedagemCustoUnitario": "102464",
+  "hospedagemMoedaEstrangeira": "Dólar Americano",
+  "hospedagemJustificativa": "Justificativa para a hospedagem internacional"
 }
