@@ -14,12 +14,13 @@ describe("Completar cadastro do usuário", () => {
             
             
         });
-        it("Vai para sub-seção \"Endereço\" e preenche os campos vindos da fixture e salvar.", () => {
+        it("Vai para sub-seção \"Endereço\", preenche os campos vindos da fixture e salva.", () => {
             cy.fixture("completar-cadastro").then((endereco) => {
             
                 cy.get('[data-cy="endereco"]').click();
 
-                cy.get('[data-cy="endereco.cep"]').clear().type(endereco.cep + "{enter}");
+                cy.get('[data-cy="endereco.cep"]').clear().type(endereco.cep);
+                cy.get('body').click('topLeft');
 
                 cy.get('[data-cy="endereco.logradouro"]').should('have.value', endereco.logradouro);
                 cy.get('[data-cy="endereco.bairro"]').should('have.value', endereco.bairro);
@@ -35,7 +36,7 @@ describe("Completar cadastro do usuário", () => {
             });
             cy.get('#root span.css-5bljoh').should('have.text', 'Sucesso');
         });
-        it("Vai para sub-seção \"Dados Acadêmicos\" e preenche os campos vindos da fixture e salvar.", () => {
+        it("Vai para sub-seção \"Dados Acadêmicos\", preenche os campos vindos da fixture e salva.", () => {
             cy.fixture("completar-cadastro").then((dados) => {                
             
                 cy.get('[data-cy="dados-academicos"]').click();
@@ -85,7 +86,7 @@ describe("Completar cadastro do usuário", () => {
             });
             cy.get('#root div.css-9qbsp5').should('have.text', 'SucessoSalvo com sucesso!');
         });
-        it("Vai para sub-seção \"Dados Profissionais\" e preenche os campos vindos da fixture e salvar.", () => {
+        it("Vai para sub-seção \"Dados Profissionais\", preenche os campos vindos da fixture e salva.", () => {
             cy.fixture("completar-cadastro").then((dados) => {
             
                 cy.get('[data-cy="dados-profissionais"]').click();
@@ -118,7 +119,7 @@ describe("Completar cadastro do usuário", () => {
             });
             cy.get('span.css-5bljoh').should('have.text', 'Sucesso');
         });
-        it("Vai para sub-seção \"Documentos Pessoais\" e submete os arquivos e salvar.", () => {
+        it("Vai para sub-seção \"Documentos Pessoais\", submete os arquivos e salva.", () => {
             
             cy.get('[data-cy="documentos-pessoais"]').click();
             
@@ -152,6 +153,24 @@ describe("Completar cadastro do usuário", () => {
             
             cy.get('[data-cy="user-menu"]').should("be.visible");
             cy.get('span.css-5bljoh').should('have.text', 'Sucesso');
+        });
+        it("Vai para sub-seção \"Endereço\" e preenche um CEP inexistente, não há compleção automática de endereço.", () => {
+            cy.fixture("completar-cadastro").then((endereco) => {
+            
+                cy.get('[data-cy="endereco"]').click();
+
+                cy.get('[data-cy="endereco.logradouro"]').clear();
+                cy.get('[data-cy="endereco.bairro"]').clear();
+                cy.get('.css-dw0r4c.emfmz6l3').first().click();//Sugiro que criem um data-cy para isso
+
+                cy.get('[data-cy="endereco.cep"]').clear().type(endereco.cep + "{enter}");
+
+                cy.get('[data-cy="endereco.logradouro"]').should('have.value', '');
+                cy.get('[data-cy="endereco.bairro"]').should('have.value', '');
+                cy.get('[data-cy="search-estado"]').should('have.value', '');
+                cy.get('[data-cy="search-municipio"]').should('have.value', '');
+            
+            });
         });
     });
 });
